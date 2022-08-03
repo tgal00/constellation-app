@@ -1,0 +1,26 @@
+<mat-card class="p-5">
+  <mat-card-title class="fs-2 fw-light d-flex align-items-end">Dashboard<mat-icon class="iconSizedUp" color="accent">
+      dashboard
+    </mat-icon>
+  </mat-card-title>
+
+  <mat-card-content>
+
+    <div class="row mt-5 justify-content-evenly ">
+      <div class="col-md-4 mb-5 todo shadow-sm">
+        <app-dashboard-todo></app-dashboard-todo>
+      </div>
+      <div class="col-md-7 mb-5 shadow-sm note">
+        <app-dashboard-note></app-dashboard-note>
+      </div>
+      <div class="col-md-6 mb-5 shadow-sm task">
+        <app-dashboard-task></app-dashboard-task>
+      </div>
+      <div class="col-md-5 mb-5 shadow-sm collection">
+        <app-dashboard-collection></app-dashboard-collection>
+      </div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>

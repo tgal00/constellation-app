@@ -1,0 +1,32 @@
+.link{
+  color: gray;
+}
+.link:hover{
+  cursor: pointer;
+  color: black;
+}
+
+h1,p{
+  margin: 0;
+  padding: 0;
+}
+.hover{
+  font-size: 20px;
+  font-weight: 500;
+}
+.hover:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+p{
+  font-size: 18px;
+}
+
+.closeCollection{
+  color: gray;
+}
+.closeCollection:hover{
+  cursor: pointer;
+  color: black;
+}

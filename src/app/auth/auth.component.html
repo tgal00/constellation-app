@@ -1,0 +1,75 @@
+<div class="container pt-5">
+  <mat-card class="text-center w-50" *ngIf="error" (click)="error=null"><b></b>
+    <mat-card-title>{{error}}</mat-card-title>
+    <mat-card-subtitle>(click to close)</mat-card-subtitle>
+  </mat-card>
+
+  <div class="row p-2">
+    <div class="col-lg-6 d-none d-lg-block ">
+      <img
+        src="https://img.freepik.com/free-vector/task-management-abstract-concept-illustration_335657-2127.jpg?w=1060&t=st=1657572692~exp=1657573292~hmac=d6e0bbaa4aba6a85459f441785f9f6688eaed63e844aefb461184894faa841ff">
+    </div>
+
+    <div class="col-lg-6 align-self-center" *ngIf="!isLoading">
+
+      <h1 *ngIf="loginMode"><strong>Sign In Into Existing Account</strong></h1>
+      <h1 *ngIf="!loginMode"><strong>Sign Up a New Account</strong></h1>
+
+      <form (ngSubmit)="onSubmit()">
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Enter your password</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input minlength="6" matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordFormControl">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+            Password must contain at least 6 characters.
+          </mat-error>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="!passwordFormControl.valid || !emailFormControl.valid" (click)="onSubmit()"
+          *ngIf="loginMode" class="me-2" mat-raised-button color="primary">
+          Login<i class="material-icons ms-1">login</i>
+        </button>
+          
+        <button type="button" [disabled]="!passwordFormControl.valid || !emailFormControl.valid" (click)="onSubmit()"
+          *ngIf="!loginMode" class="me-2" mat-raised-button color="primary">Register <i class="material-icons">handshake</i>
+          </button>
+
+        <button type="button" *ngIf="loginMode" mat-stroked-button (click)="changeMode()">Don't have an account?
+          <mat-label><strong>Register here</strong></mat-label>
+        </button>
+
+        <button type="button" *ngIf="!loginMode" mat-stroked-button (click)="changeMode()">Have an account? <mat-label>
+            <strong>Login here</strong>
+          </mat-label></button>
+      </form>
+
+      <img class="d-md-block d-lg-none"
+        src="https://img.freepik.com/free-vector/corporate-portrait-office-workers-employees_74855-5471.jpg?w=1480&t=st=1657578919~exp=1657579519~hmac=45844e8326a279552a9427d455e082efc8b2c11acabc5cbfc70aca9ca04922d6">
+
+    </div>
+
+    <div class="col-lg-6 align-self-center " *ngIf="isLoading">
+      <mat-spinner style="margin:0 auto;"></mat-spinner>
+    </div>
+  </div>
+</div>

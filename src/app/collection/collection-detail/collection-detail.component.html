@@ -1,0 +1,36 @@
+<div *ngIf="collection">
+  <span class="d-flex align-items-center mb-3">
+  <h1 >{{collection.categoryName}}</h1>
+  <mat-icon class="close" matTooltip="Close collection" (click)="onClose()">close</mat-icon>
+</span>
+  <input *ngIf="collection.items.length>0" type="text" placeholder="Search {{collection.categoryName}}..." [(ngModel)]="searchText" class="mb-3">
+  <div class="row ms-2" *ngFor="let item of collection.items|search:searchText; let i = index">
+    <span class="d-flex align-items-center mb-1">
+      <p>• {{item}} </p>
+      <mat-icon *ngIf="searchText.length==0" (click)="deleteItem(i)" class="ms-2 icon">delete</mat-icon>
+    </span>
+  </div>
+  <div class="row ms-2" *ngIf="searchText.length==0" >
+    <div class="col">
+      <h1 matTooltip="Add Item" class="add" *ngIf="!addMode" (click)="addMode=true">
+        <mat-icon>add</mat-icon>
+      </h1>
+    </div>
+  </div>
+  <div class="row ms-2 d-flex flex-column" *ngIf="addMode">
+    <div class="col">
+      <form (ngSubmit)="onAdd()">
+        <input type="text" placeholder="..." [(ngModel)]="addItem" name="item">
+        <input type="submit" name="submit" hidden />
+      </form>
+    </div>
+    <div class="col mt-2" >
+      <button matTooltip="Add New Item" mat-stroked-button class="me-2" (click)="onAdd()" [disabled]="addItem.length==0">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button matTooltip="Close" (click)="addMode=false" mat-stroked-button color="warn">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

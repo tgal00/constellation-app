@@ -1,0 +1,53 @@
+.hover:hover {
+  background-color: ghostwhite;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.text-muted {
+  font-size: 12px;
+}
+
+.text-muted mat-icon {
+  font-size: 12px;
+  width: auto;
+  height: auto;
+}
+
+.badge {
+  background-color: rgb(255, 233, 193);
+  color: rgb(87, 17, 17);
+  font-weight: 500;
+  border-radius: 0px;
+  padding: 2px 10px;
+}
+
+.noteText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  word-wrap: none;
+  white-space:pre-line;
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+
+h2{
+  margin: 0;
+  padding: 0;
+}
+
+.categorySearch{
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: auto;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+}

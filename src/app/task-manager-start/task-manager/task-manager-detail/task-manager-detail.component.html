@@ -1,0 +1,93 @@
+
+<mat-divider></mat-divider>
+<div class="row mt-3">
+  <div class="col">
+    <button routerLink="../../" matTooltip="Go Back" style="border:none" mat-stroked-button><mat-icon>arrow_back</mat-icon></button>
+    <h1 class="text-decoration-underline">{{task.taskTitle}}</h1>
+    <h2 class="text-muted">{{task.taskDescription}}</h2>
+
+    <h3 class="text-muted ">Starting Date: {{task.taskDateStarted|date:'mediumDate'}} </h3>
+    <h3 class="text-muted ">Due Date: {{task.taskDateEnding|date:'mediumDate'}} </h3>
+    <p *ngIf="task.taskKeywords" class="text-muted">Keywords: <span *ngFor="let keyword of task.taskKeywords"
+        class="keyword"> {{keyword}} </span>
+    </p>
+    <p class="fw-bold d-flex text-muted" *ngIf="task.taskStatus=='notStarted'"><span
+        class="ns d-flex align-items-center">
+        <mat-icon class="me-1">info</mat-icon>Not Started
+      </span>
+    </p>
+    <p class="fw-bold d-flex text-muted" *ngIf="task.taskStatus=='inProgress'"><span
+        class="ip d-flex align-items-center">
+        <mat-icon class="me-1">info</mat-icon>In Progress
+      </span>
+    </p>
+    <p class="fw-bold d-flex text-muted" *ngIf="task.taskStatus=='complete'"><span class="c d-flex align-items-center">
+        <mat-icon class="me-1">info</mat-icon>Complete
+      </span>
+    </p>
+  </div>
+</div>
+<mat-divider class="mb-3"></mat-divider>
+<div class="row mb-2" *ngFor="let taskItem of task.taskItems;let i = index">
+  <div class="col">
+    <span class="d-flex align-items-center">
+      <h2>{{taskItem.taskItemHeadline}}</h2>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="!editMode||editItemNum!=i" (click)="onDelete(i)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        <button mat-menu-item (click)="editMode=true;editItemNum = i; editString = taskItem.taskItemDescription"
+          *ngIf="!editMode||editItemNum!=i">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item *ngIf="editMode&&editItemNum==i" (click)="onSave(editItemNum)">
+          <mat-icon>save</mat-icon>
+          <span>Save</span>
+        </button>
+        <button mat-menu-item *ngIf="editMode&&editItemNum==i" (click)="editMode=false;editItemNum = -1">
+          <mat-icon>close</mat-icon>
+          <span>Cancel</span>
+        </button>
+      </mat-menu>
+
+
+    </span>
+    <h3 *ngIf="!editMode||editItemNum!=i">{{taskItem.taskItemDescription}}</h3>
+    <mat-form-field appearance="outline" *ngIf="editMode&&editItemNum==i" class="w-100">
+      <mat-label>Edit Task Item</mat-label>
+      <textarea rows="10" col="10" [(ngModel)]="editString" matInput></textarea>
+    </mat-form-field>
+  </div>
+
+</div>
+<button matTooltip="Add New Task Item" mat-stroked-button *ngIf="!addTaskItem" (click)="addTaskItem=true" style="border:none"><mat-icon>add</mat-icon></button>
+<div *ngIf="addTaskItem">
+
+  <div class="d-flex flex-column mt-2">
+    <mat-form-field appearance="fill">
+      <mat-label class="d-flex align-items-center">
+        <mat-icon class="me-2" color="accent">title</mat-icon>Task Item Title
+      </mat-label>
+      <input matInput [(ngModel)]="newTaskItem.taskItemHeadline">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label class="d-flex align-items-center">
+        <mat-icon class="me-2" color="accent">description</mat-icon>Task Item Description
+      </mat-label>
+      <textarea matInput rows="5" col="5"
+        [(ngModel)]="newTaskItem.taskItemDescription">{{newTaskItem.taskItemDescription}}</textarea>
+    </mat-form-field>
+  </div>
+  <button matTooltip="Add" mat-stroked-button [disabled]="newTaskItem.taskItemDescription==''||newTaskItem.taskItemHeadline==''"
+    (click)="onAddNewTaskItem()" class="me-2">
+    <mat-icon>add</mat-icon>
+  </button>
+  <button matTooltip="Close" color="warn" mat-stroked-button (click)="addTaskItem=false;newTaskItem.taskItemDescription='';newTaskItem.taskItemHeadline=''">
+    <mat-icon color="warn">close</mat-icon>
+  </button>
+</div>

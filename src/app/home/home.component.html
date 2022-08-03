@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<mat-sidenav-container class="example-container">
+
+
+  <mat-sidenav class="sidenav" #sidenav mode="over">
+
+    <mat-selection-list [multiple]="false">
+      <div mat-subheader>Home</div>
+      <mat-list-option routerLink="/home">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <div mat-line> <b>Dashboard</b></div>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Productity</div>
+      <mat-list-option routerLink="todo">
+        <mat-icon mat-list-icon>checklist_rtl</mat-icon>
+        <div mat-line> <b>ToDo List</b> </div>
+      </mat-list-option>
+      <mat-list-option routerLink="notes">
+        <mat-icon mat-list-icon>edit_note</mat-icon>
+        <div mat-line> <b>Notes</b></div>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Management</div>
+      <mat-list-option routerLink="taskManager">
+        <mat-icon mat-list-icon>task</mat-icon>
+        <div mat-line> <b>Task Manager</b></div>
+      </mat-list-option>
+      <mat-list-option routerLink="collection">
+        <mat-icon mat-list-icon>view_list</mat-icon>
+        <div mat-line> <b>Collections</b></div>
+      </mat-list-option>
+
+    </mat-selection-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+

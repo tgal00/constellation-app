@@ -1,0 +1,20 @@
+form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.iconSizedUp{
+  width: auto;
+  height: auto;
+  font-size: 2rem;
+}
+
+.delBtn{
+  padding: 0;
+
+}
+
+.mat-card:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}

@@ -1,0 +1,101 @@
+<mat-divider></mat-divider>
+<div class="row mt-3">
+  <div class="col-md-7">
+    <button routerLink="../../" matTooltip="Go Back" style="border:none" mat-stroked-button><mat-icon>arrow_back</mat-icon></button>
+
+    <h1 *ngIf="!editMode" class="d-flex  align-items-center text-decoration-underline">{{note.noteTitle}}
+    </h1>
+
+    <mat-form-field *ngIf="editMode" appearance="outline">
+      <mat-label>Note Title</mat-label>
+      <input matInput [(ngModel)]="editNote.noteTitle" placeholder="Ex. Pizza">
+    </mat-form-field>
+
+    <div class="row mb-2 align-items-center text-muted">
+      <div class="col  ">
+        <p class="d-flex  align-items-center ">
+          <mat-icon class="me-1">access_time</mat-icon>Created:
+        </p>
+      </div>
+      <div class="col ">
+        <p>{{note.created|date:'longDate':'shortTime'}} {{note.created|date:'shortTime'}}</p>
+      </div>
+    </div>
+
+    <div class="row mb-2 align-items-center text-muted">
+      <div class="col ">
+        <p class="d-flex  align-items-center ">
+          <mat-icon class="me-1">access_time</mat-icon>Last edited:
+        </p>
+      </div>
+      <div class="col">
+        <p>{{note.lastEdited|date:'longDate':'shortTime'}} {{note.lastEdited|date:'shortTime'}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="!editMode" class="row text-muted align-items-center">
+      <div class="col">
+        <p class="d-flex  align-items-center ">
+          <mat-icon class="me-1">category</mat-icon>Category:
+        </p>
+      </div>
+      <div class="col">
+        <p>{{note.noteCategory}} </p>
+      </div>
+    </div>
+
+    <div *ngIf="editMode" class="row  align-items-start">
+      <div class="col">
+        <p class="d-flex  align-items-center ">
+          <mat-icon class="me-1">category</mat-icon>Category:
+        </p>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Note Category</mat-label>
+          <input matInput [(ngModel)]="editNote.noteCategory" placeholder="Ex. Pizza">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12">
+    <div class="row align-items-center">
+      <div class="col d-flex justify-content-start">
+        <button matTooltip="Smaller Text" mat-stroked-button class="me-2" (click)="fontDecrease()">
+          <mat-icon>zoom_out</mat-icon>
+        </button>
+        <button matTooltip="Larger Text" mat-stroked-button (click)="fontIncrease()">
+          <mat-icon>zoom_in</mat-icon>
+        </button>
+      </div>
+
+      <div class="col d-flex justify-content-end" *ngIf="!editMode">
+        <button matTooltip="Edit Note" mat-stroked-button (click)="editMode=!editMode">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="col d-flex justify-content-end" *ngIf="editMode">
+        <button matTooltip="Save Note" mat-stroked-button color="primary" class="me-2" (click)="onSave()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button matTooltip="Close" mat-stroked-button color="warn" (click)="editMode=!editMode">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="col-12 mt-3 font-monospace " >
+    <p *ngIf="!editMode" style="white-space: pre-line" class="lh-1" [ngStyle]="{'font-size':getFontSize()}">
+      {{note.noteText}}
+    </p>
+    <mat-form-field class="w-100" *ngIf="editMode" appearance="outline">
+      <mat-label>Note Text</mat-label>
+      <textarea rows="30" [ngStyle]="{'font-size':getFontSize()}" matInput [(ngModel)]="editNote.noteText" placeholder="Ex. Pizza"></textarea>
+    </mat-form-field>
+  </div>
+</div>

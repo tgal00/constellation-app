@@ -1,0 +1,64 @@
+.row{
+  margin: 0px;
+}
+
+.row>*{
+  padding: 0px;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+h3{
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  padding: 0px 3px;
+  font-weight: 500;
+
+}
+
+h2{
+  margin: 0px;
+  font-weight: 500;
+}
+.ns{
+  background-color: rgb(255, 193, 193);
+  color: rgb(87, 17, 17);
+}
+.ip{
+  background-color: rgb(255, 233, 193);
+  color: rgb(87, 17, 17);
+}
+.c{
+  background-color: rgb(209, 255, 197);
+  color: rgb(87, 17, 17);
+}
+
+.task:hover{
+  background-color:ghostwhite;
+  cursor: pointer;
+}
+
+.keyword{
+  padding: 1px 10px;
+  background-color:lavender;
+  border-radius: 10px;
+  margin-right: 5px;
+  color: rgb(44, 11, 11);
+}
+
+
+.taskDesc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  word-wrap: none;
+  white-space:line;
+  font-weight: 500;
+}
+

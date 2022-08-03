@@ -1,0 +1,22 @@
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">ToDo List</h2>
+    <mat-icon class="link" routerLink="todo" matTooltip="Open Todo Page">open_in_new</mat-icon>
+  </div>
+  <h3 class="fw-normal" *ngIf="todoList.length==0">You currently have no added todos.</h3>
+  <h3 class="fw-normal" *ngIf="getPendingTodos().length==0 && todoList.length>0">You currently have no pending todos.</h3>
+  <div *ngIf="getPendingTodos().length>0">
+    <div class="row mb-2" *ngFor="let todo of todoList">
+      <div class="col d-flex text-break   align-items-center" *ngIf="!todo.isDone">
+
+        <mat-icon color="accent">arrow_right</mat-icon>
+        <p class="ms-2  task">{{todo.task}}</p>
+
+        <p *ngIf="todo.priority=='high'" class="badge h  ms-2 ">{{todo.priority}}</p>
+        <p *ngIf="todo.priority=='medium'" class="badge   md ms-2  ">{{todo.priority}}</p>
+        <p *ngIf="todo.priority=='low'" class="badge l ms-2 ">{{todo.priority}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>

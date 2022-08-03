@@ -1,0 +1,59 @@
+<mat-card class="p-5">
+  <mat-card-title class="fs-2 fw-light  d-flex  align-items-end">
+    ToDo 
+    <mat-icon color="accent">checklist_rtl</mat-icon>
+  </mat-card-title>
+
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Task</mat-label>
+      <input matInput placeholder="call mom..." required [formControl]="taskControl">
+      <mat-error *ngIf="taskControl.hasError('required')">Please enter a task</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="ms-2 me-2">
+      <mat-label>Choose priority</mat-label>
+      <mat-select required [formControl]="priorityControl">
+        <mat-option value="high">High</mat-option>
+        <mat-option value="medium">Medium</mat-option>
+        <mat-option value="low">Low</mat-option>
+      </mat-select>
+      <mat-error *ngIf="priorityControl.hasError('required')">Please choose priority</mat-error>
+    </mat-form-field>
+
+    <p>
+      <button matTooltip="Add ToDo" (click)="onAdd()" [disabled]="!taskControl.valid || !priorityControl.valid" mat-fab color="accent">
+        <mat-icon>add</mat-icon>
+      </button>
+    </p>
+
+  </form>
+  <mat-card-content>
+    
+    <mat-divider></mat-divider>
+    <h2 class="text-center mt-5" *ngIf="todoList.length==0">No new tasks</h2>
+    <div class="container mt-3 mb-3" *ngIf="todoList.length>0">
+      
+      <div class="row d-flex justify-content-center mb-3 ">
+        <div class="col-md-10 ">
+          <div class="row">
+            <div class="col justify-content-end mt-2 d-flex  delBtn">
+              <button matTooltip="Delete Completed" (click)="deleteCompleted()" mat-stroked-button color="primary">
+                <mat-icon>
+                  delete</mat-icon>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center ">
+        <div class="col-md-10  shadow-sm">
+          <app-todo-list-item *ngFor="let task of todoList" [task]="task"></app-todo-list-item>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

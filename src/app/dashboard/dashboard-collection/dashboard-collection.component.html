@@ -1,0 +1,31 @@
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-start mb-3">
+    <h2 class="fw-bold">Collections</h2>
+    <mat-icon class="link" routerLink="collection" matTooltip="Open Collection Page">open_in_new</mat-icon>
+  </div>
+  <div *ngIf="collectionList.length==0">
+    <h3>You currently have no added collections.</h3>
+  </div>
+  <div class="row mb-2 align-items-start" *ngIf="collectionList.length>0">
+    <div class="col">
+      <div *ngFor="let coll of collectionList; let i = index">
+        <h1 class="hover " (click)="selectedCollection=coll">{{coll.categoryName}} ({{coll.items.length}})</h1>
+      </div>
+    </div>
+    <div class="col" *ngIf="selectedCollection">
+      <div class="d-flex align-items-center mb-2">
+        <h1 class="hover">{{selectedCollection.categoryName}}</h1>
+        <mat-icon (click)="selectedCollection=undefined" class="closeCollection" matTooltip="Close collection">close
+        </mat-icon>
+      </div>
+      <div *ngIf="selectedCollection.items.length>0">
+        <div *ngFor="let item of selectedCollection.items">
+          <p class=" mb-1 ms-2">• {{item}} </p>
+        </div>
+      </div>
+      <div *ngIf="selectedCollection.items.length==0">
+          <p class=" mb-1 ms-2">This collection has no items. </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.mat-card:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}
+
+.todo{
+  background-color: rgb(255, 242, 242);
+  color: rgb(92, 8, 8);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.note{
+  background-color:rgb(234, 255, 239);
+}
+
+.task{
+  background-color: rgb(241, 248, 252);
+}
+
+.collection{
+  background-color: rgb(255, 246, 238);
+  color:rgb(126, 75, 0);
+}

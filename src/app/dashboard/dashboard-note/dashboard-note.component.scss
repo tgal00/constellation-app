@@ -1,0 +1,56 @@
+.hover:hover {
+  border: 1px solid black;
+  cursor: pointer;
+
+}
+.note{
+  border: 1px solid white;
+  background-color: white;
+}
+p {
+  margin: 0;
+  font-size: 18px;
+}
+
+
+
+
+.badge {
+  background-color: rgb(255, 233, 193);
+  color: rgb(87, 17, 17);
+  font-weight: 500;
+  border-radius: 0px;
+  padding: 2px 10px;
+}
+
+.noteText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+  word-wrap: none;
+  white-space:pre-line;
+
+}
+
+h2{
+  margin: 0;
+  padding: 0;
+}
+
+.link{
+  color: gray;
+}
+.link:hover{
+  cursor: pointer;
+  color: black;
+}
+
+.smallText{
+  font-size: 12px;
+}
+
+.textColor{
+  color: rgb(23, 71, 13);
+}

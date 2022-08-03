@@ -1,0 +1,29 @@
+<div class="mt-4">
+  <div class="d-flex justify-content-between textColor align-items-center mb-3">
+    <h2 class="fw-bold">Recent Notes</h2>
+    <mat-icon class="link" routerLink="notes" matTooltip="Open Notes Page">open_in_new</mat-icon>
+  </div>
+  <h3 *ngIf="noteList.length==0">You currently have no added notes.</h3>
+  <div class="row" *ngIf="noteList.length>0">
+    <div class="col-xl-4 mb-3 " *ngFor="let note of noteList">
+      <div class=" p-2 shadow-sm hover note" [routerLink]="['notes','details',note.noteId]">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="textColor">{{note.noteTitle}}</h2>
+
+          <span matTooltip="Last Edited" class="d-flex align-items-center text-muted smallText">
+            <mat-icon>access_time</mat-icon>
+            <div class="d-flex flex-column lh-1 ">
+              <span>{{note.lastEdited|date:'shortDate'}}</span>
+              <span>{{note.lastEdited|date:'shortTime'}}</span>
+            </div>
+          </span>
+
+        </div>
+        <div class="fs-6 badge mb-3">{{note.noteCategory}} </div>
+        <mat-divider></mat-divider>
+        <p class="noteText ">{{note.noteText}}</p>
+      </div>
+    </div>
+  </div>
+</div>

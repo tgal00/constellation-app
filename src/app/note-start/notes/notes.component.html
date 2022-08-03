@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col">
+
+    <mat-tab-group #tabs mat-align-tabs="center" [(selectedIndex)]="selectedValue" >
+      <mat-tab label="Note List">
+
+        <app-note-list></app-note-list>
+
+      </mat-tab>
+
+      <mat-tab label="New Note" >
+        <app-note-add (tabChange)="onTabChange($event)"></app-note-add>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</div>

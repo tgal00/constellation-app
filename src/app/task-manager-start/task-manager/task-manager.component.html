@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col" >
+
+    <mat-tab-group mat-align-tabs="center" [(selectedIndex)]="selectedValue">
+      <mat-tab label="Task List">
+
+        <app-task-manager-list></app-task-manager-list>
+
+      </mat-tab>
+
+      <mat-tab label="New Task" >
+       <app-task-manager-add  (tabChange)="onTabChange($event)"></app-task-manager-add>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+
+</div>

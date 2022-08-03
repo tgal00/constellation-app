@@ -1,0 +1,57 @@
+input{
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  outline: none;
+  width: auto;
+  box-sizing: border-box;
+  background-color: rgb(252, 244, 235);;
+}
+
+button:disabled{
+  cursor:not-allowed;
+}
+h1{
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+h1:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.add{
+  color: gray;
+  display: inline-block;
+
+}
+.add:hover{
+  color: black;
+}
+
+.icon{
+  color: rgb(153, 153, 153);
+}
+.icon:hover{
+  color: #000;
+  cursor: pointer;
+}
+
+
+.mat-card:not([class*=mat-elevation-z]){
+  box-shadow: none;
+}
+
+.catBg{
+  background-color: rgb(252, 244, 235);
+  color: rgb(82, 51, 24);
+  border-bottom-left-radius: 20px;
+}
+
+.itemBg{
+  background-color: rgb(250, 237, 223);
+  color: rgb(82, 51, 24);
+  border-top-right-radius: 20px;
+}

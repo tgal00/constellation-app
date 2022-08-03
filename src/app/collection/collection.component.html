@@ -1,0 +1,51 @@
+<mat-card class="p-5 ">
+  <mat-card-title class="fs-2 fw-light d-flex align-items-end">Collections<mat-icon class="iconSizedUp" color="accent">
+      view_list
+    </mat-icon>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="row mt-5 g-3 ">
+
+      <div class="col-md-5 catBg shadow-sm ">
+        <div class="  p-3 ">
+          <h2 *ngIf="collectionList.length==0">Your list is empty.</h2>
+          <div *ngIf="collectionList.length>0">
+            <div *ngFor="let coll of collectionList; let i = index">
+              <span class="d-flex align-items-center mb-1">
+                <h1 (click)="selectedCollection=coll">{{coll.categoryName}} ({{coll.items.length}})</h1>
+                <mat-icon (click)="deleteCollection(coll.collectionId)" class="ms-2 icon">delete</mat-icon>
+              </span>
+            </div>
+          </div>
+          <h1 matTooltip="Add Category" class="add " *ngIf="!addMode" (click)="addMode=true">
+            <mat-icon>add</mat-icon>
+          </h1>
+          <div *ngIf="addMode" class="row">
+            <div class="col">
+              <input type="text" placeholder="Category..." [(ngModel)]="categoryName">
+            </div>
+            <div class="row">
+              <div class="col">
+                <button matTooltip="Add New Category" class="me-2" [disabled]="categoryName.length==0"
+                  (click)="addCategory()" mat-stroked-button>
+                  <mat-icon class="text-muted">add</mat-icon>
+                </button>
+                <button color="warn" matTooltip="Close" (click)="addMode=false" mat-stroked-button>
+                  <mat-icon class="text-muted" class="text-danger">close</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-5 itemBg  shadow-sm" *ngIf="selectedCollection">
+        <div class="p-3 " >
+          <app-collection-detail (close)="onClose($event)" *ngIf="selectedCollection" [collection]="selectedCollection">
+          </app-collection-detail>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

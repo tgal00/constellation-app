@@ -1,0 +1,45 @@
+<div class="mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">Tasks</h2>
+    <mat-icon class="link" routerLink="taskManager" matTooltip="Open Task Page">open_in_new</mat-icon>
+  </div>
+  <h3 class="fw-normal" *ngIf="taskList.length==0">You
+    currently have no added tasks.</h3>
+    <h3 class="fw-normal" *ngIf="tasksNotStarted.length==0&&tasksInProgress.length==0&&taskList.length>0">You
+      currently have no pending tasks.</h3>
+  <div class="row mb-3 justify-content-evenly" *ngIf="taskList.length>0">
+    <div class="col-md-5" *ngIf="tasksNotStarted.length>0">
+      <h3 class="ns">Not Started</h3>
+      <div class="row" *ngFor="let task of tasksNotStarted">
+        <div class="col-12 mb-3 mt-2">
+          <div class="p-1 task shadow-sm" [routerLink]="['taskManager','details',task.taskId]">
+            <h2 class="d-flex align-items-center">
+              {{task.taskTitle}}
+            </h2>
+            <p class="text-muted taskDesc">{{task.taskDescription}}</p>
+            <p class="mt-3 text-muted d-flex align-items-center">
+              <mat-icon class="me-1">access_time</mat-icon>Due: {{task.taskDateEnding|date:'mediumDate'}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5" *ngIf="tasksInProgress.length>0">
+      <h3 class="ip">In Progress</h3>
+      <div class="row " *ngFor="let task of tasksInProgress">
+        <div class="col-12 mb-3 mt-2">
+          <div class=" p-1 shadow-sm task" [routerLink]="['taskManager','details',task.taskId]">
+            <h2 class="d-flex align-items-center">
+              {{task.taskTitle}}
+            </h2>
+            <p class="text-muted taskDesc ">{{task.taskDescription}}</p>
+            <p class="mt-3 text-muted d-flex align-items-center">
+              <mat-icon class="me-1">access_time</mat-icon>Due: {{task.taskDateEnding|date:'mediumDate'}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

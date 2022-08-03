@@ -1,0 +1,70 @@
+<div class="mt-2">
+
+  <div class="d-flex justify-content-between ">
+    <div>
+      <button matTooltip="Show As List" mat-stroked-button (click)="showMode='list'">
+        <mat-icon>list_alt</mat-icon>
+      </button>
+      <button matTooltip="Show As Card" mat-stroked-button class="ms-2" (click)="showMode='card'">
+        <mat-icon>filter_none</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex align-items-end">
+      <input type="text" class="categorySearch" placeholder="Search categories" [(ngModel)]="searchCategoryText">
+    </div>
+  </div>
+  <h1 class="mt-5 text-center" *ngIf="noteList.length==0">You have no new notes.</h1>
+
+  <div *ngIf="showMode=='list'" class="mt-2">
+    <div class="d-flex hover align-items-center" *ngFor="let note of noteList |filterCategory:searchCategoryText">
+
+      <div class="me-2">
+        <mat-icon color="primary">event_note</mat-icon>
+      </div>
+      <div class=" me-auto d-flex flex-column w-100 pt-2 pb-2" [routerLink]="['details',note.noteId]">
+        <p class="">{{note.noteTitle}}</p>
+        <p class="text-muted d-flex align-items-center">
+          <mat-icon >access_time</mat-icon>Created: {{note.created|date}}
+        </p>
+      </div>
+      <div class="fs-6 badge" [routerLink]="['details',note.noteId]">{{note.noteCategory}}
+      </div>
+
+
+      <div><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onDeleteNote(note.noteId)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row m-0 g-3 mb-5 " *ngIf="showMode=='card'">
+    <div class="col-md-4" *ngFor="let note of noteList |filterCategory:searchCategoryText">
+      <div class="d-flex justify-content-end">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onDeleteNote(note.noteId)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="border p-2 shadow-sm hover" [routerLink]="['details',note.noteId]">
+
+        <h2>{{note.noteTitle}}</h2>
+        <div class="fs-6 badge mb-3">{{note.noteCategory}} </div>
+        <mat-divider></mat-divider>
+        <p class="noteText text-muted">{{note.noteText}}</p>
+      </div>
+    </div>
+  </div>
+</div>
