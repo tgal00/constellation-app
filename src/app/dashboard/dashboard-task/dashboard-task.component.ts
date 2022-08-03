@@ -32,7 +32,6 @@ export class DashboardTaskComponent implements OnInit {
       }
       return [arr1,arr2,arr3];
     })).subscribe(res => {
-      console.log(res);
       this.tasksNotStarted = res[0];
       this.tasksInProgress = res[1];
       this.taskList = res[2];

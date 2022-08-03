@@ -33,7 +33,6 @@ export class TaskManagerDetailComponent implements OnInit {
     this.route.params.subscribe(res => {
       this.id = res['id'];
       this.task = this.taskManagerService.getTask(this.id);
-      console.log(this.task)
     });
 
   }
