@@ -11,6 +11,7 @@ import { ToDoTask } from '../todoTask.model';
 export class TodoListItemComponent implements OnInit {
 
   @Input() task!: ToDoTask;
+  @Input() fontSize!:number;
   isChecked !:boolean;
 
   constructor(private todoService:TodoListService) { }
@@ -22,6 +23,10 @@ export class TodoListItemComponent implements OnInit {
   onCheck(){
     this.task.isDone = !this.task.isDone;
     this.todoService.editTodo(this.task);
+  }
+
+  getFontSize(){
+    return this.fontSize+"px";
   }
 
 }

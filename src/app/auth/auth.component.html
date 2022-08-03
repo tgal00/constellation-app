@@ -46,19 +46,19 @@
         </mat-form-field>
 
         <button type="submit" [disabled]="!passwordFormControl.valid || !emailFormControl.valid" (click)="onSubmit()"
-          *ngIf="loginMode" class="me-2" mat-raised-button color="primary">
+          *ngIf="loginMode" class="me-2 mb-2" mat-raised-button color="primary">
           Login<i class="material-icons ms-1">login</i>
         </button>
           
         <button type="button" [disabled]="!passwordFormControl.valid || !emailFormControl.valid" (click)="onSubmit()"
-          *ngIf="!loginMode" class="me-2" mat-raised-button color="primary">Register <i class="material-icons">handshake</i>
+          *ngIf="!loginMode" class="me-2 mb-2" mat-raised-button color="primary">Register <i class="material-icons">handshake</i>
           </button>
 
-        <button type="button" *ngIf="loginMode" mat-stroked-button (click)="changeMode()">Don't have an account?
+        <button  type="button" *ngIf="loginMode" mat-stroked-button (click)="changeMode()">Don't have an account?
           <mat-label><strong>Register here</strong></mat-label>
         </button>
 
-        <button type="button" *ngIf="!loginMode" mat-stroked-button (click)="changeMode()">Have an account? <mat-label>
+        <button  type="button" *ngIf="!loginMode" mat-stroked-button (click)="changeMode()">Have an account? <mat-label>
             <strong>Login here</strong>
           </mat-label></button>
       </form>

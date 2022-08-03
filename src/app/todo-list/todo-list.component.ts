@@ -15,6 +15,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   priorityControl = new FormControl<string | null>(null, Validators.required);
   taskControl = new FormControl<string | null>(null, Validators.required);
   todoList:ToDoTask[] = [];
+  fontSize:number = 20;
 
   private subscription:Subscription = new Subscription();
 
@@ -35,6 +36,18 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
     this.priorityControl.reset();
     this.taskControl.reset();
+  }
+
+  fontDecrease(){
+    if(this.fontSize>=13){
+    this.fontSize-=4;
+    }
+  }
+  fontIncrease(){
+    this.fontSize+=4;
+  }
+  getFontSize(){
+    return this.fontSize;
   }
 
   deleteCompleted(){

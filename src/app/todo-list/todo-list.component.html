@@ -1,6 +1,6 @@
 <mat-card class="p-5">
   <mat-card-title class="fs-2 fw-light  d-flex  align-items-end">
-    ToDo 
+    ToDo
     <mat-icon color="accent">checklist_rtl</mat-icon>
   </mat-card-title>
 
@@ -22,21 +22,32 @@
     </mat-form-field>
 
     <p>
-      <button matTooltip="Add ToDo" (click)="onAdd()" [disabled]="!taskControl.valid || !priorityControl.valid" mat-fab color="accent">
+      <button matTooltip="Add ToDo" (click)="onAdd()" [disabled]="!taskControl.valid || !priorityControl.valid" mat-fab
+        color="accent">
         <mat-icon>add</mat-icon>
       </button>
     </p>
 
   </form>
   <mat-card-content>
-    
+
     <mat-divider></mat-divider>
     <h2 class="text-center mt-5" *ngIf="todoList.length==0">No new tasks</h2>
     <div class="container mt-3 mb-3" *ngIf="todoList.length>0">
-      
+
       <div class="row d-flex justify-content-center mb-3 ">
-        <div class="col-md-10 ">
+        <div class="col ">
           <div class="row">
+            <div class="col justify-content-start mt-2 d-flex p-0">
+              <button class="me-1" matTooltip="Zoom Out"  (click)="fontDecrease()" mat-stroked-button>
+                <mat-icon>
+                  zoom_out</mat-icon>
+              </button>
+              <button matTooltip="Zoom In" (click)="fontIncrease()" mat-stroked-button>
+                <mat-icon>
+                  zoom_in</mat-icon>
+              </button>
+            </div>
             <div class="col justify-content-end mt-2 d-flex  delBtn">
               <button matTooltip="Delete Completed" (click)="deleteCompleted()" mat-stroked-button color="primary">
                 <mat-icon>
@@ -44,14 +55,13 @@
               </button>
             </div>
           </div>
-
         </div>
       </div>
 
 
       <div class="row justify-content-center ">
-        <div class="col-md-10  shadow-sm">
-          <app-todo-list-item *ngFor="let task of todoList" [task]="task"></app-todo-list-item>
+        <div class="col  shadow-sm " >
+          <app-todo-list-item *ngFor="let task of todoList" [task]="task" [fontSize]="getFontSize()"></app-todo-list-item>
         </div>
       </div>
     </div>
